@@ -40,7 +40,7 @@
       this.videoOptions = WistiaTech.parseUrl(this.options_.source.src);
       this.videoId = this.videoOptions.videoId;
 
-      var divWrapper = videojs.createEl('div', {
+      var div = videojs.createEl('div', {
         id: this.videoId,
         className: this.videoOptions.classString,
         width: this.options_.width || "100%",
@@ -51,8 +51,16 @@
         src: protocol + "//fast.wistia.com/assets/external/E-v1.js"
       });
 
-      divWrapper.insertBefore(this.wistiaScriptElement, divWrapper.firstChild);
+      var divWrapper = document.createElement('div');
+      divWrapper.setAttribute('id', 'wistia-wrapper');
+      divWrapper.appendChild(div);
 
+      var divBlocker = document.createElement('div');
+      divBlocker.setAttribute('class', 'vjs-iframe-blocker');
+      divBlocker.setAttribute('style', 'position:absolute;top:0;left:0;width:100%;height:100%');
+
+      divWrapper.appendChild(divBlocker);
+      div.insertBefore(this.wistiaScriptElement, div.firstChild);
       this.initPlayer();
 
       return divWrapper;
