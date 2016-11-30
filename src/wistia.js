@@ -135,9 +135,9 @@
         self.wistiaInfo.time = s;
         self.player_.trigger('timeupdate');
 
-        if( self.wistiaVideo.percentWatched() >= 1) {
-          self.onFinish();
-        }
+        // if( self.wistiaVideo.percentWatched() >= 1) {
+        //   self.onFinish();
+        // }
       });
 
       this.wistiaVideo.bind('volumechange', function(v) {
