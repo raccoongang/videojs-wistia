@@ -288,12 +288,16 @@
     },
 
     volume: function() {
+      console.log('volume');
+      console.log(this.wistiaInfo.volume);
       return (this.wistiaInfo.muted) ? this.wistiaInfo.muteVolume : this.wistiaInfo.volume;
     },
 
     setVolume: function(percentAsDecimal) {
+      console.log('percentAsDecimal');
+      console.log(percentAsDecimal);
       this.wistiaInfo.volume = percentAsDecimal;
-      this.wistiaVideo.volume = percentAsDecimal;
+      this.wistiaVideo.volume(percentAsDecimal);
       this.player_.trigger('volumechange');
     },
 
