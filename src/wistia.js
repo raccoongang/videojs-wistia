@@ -140,10 +140,6 @@
         // }
       });
 
-      this.wistiaVideo.bind('volumechange', function(v) {
-        self.setVolume(v);
-      });
-
       this.wistiaVideo.bind('end', function(t) {
         self.onFinish();
       });
