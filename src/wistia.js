@@ -134,10 +134,6 @@
       this.wistiaVideo.bind('secondchange', function(s) {
         self.wistiaInfo.time = s;
         self.player_.trigger('timeupdate');
-
-        // if( self.wistiaVideo.percentWatched() >= 1) {
-        //   self.onFinish();
-        // }
       });
 
       this.wistiaVideo.bind('end', function(t) {
@@ -284,14 +280,10 @@
     },
 
     volume: function() {
-      console.log('volume');
-      console.log(this.wistiaInfo.volume);
       return (this.wistiaInfo.muted) ? this.wistiaInfo.muteVolume : this.wistiaInfo.volume;
     },
 
     setVolume: function(percentAsDecimal) {
-      console.log('percentAsDecimal');
-      console.log(percentAsDecimal);
       this.wistiaInfo.volume = percentAsDecimal;
       this.wistiaVideo.volume(percentAsDecimal);
       this.player_.trigger('volumechange');
